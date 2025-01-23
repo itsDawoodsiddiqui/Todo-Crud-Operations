@@ -90,14 +90,14 @@ def createTodo(request):
             if not title:
                 return JsonResponse({"error": "Title is required."}, status=400)
 
-            # max_length = 10
-            # if len(title) > max_length:
-            #     return JsonResponse({"error": f"Title must not exceed {max_length} characters."}, status=400)
+            max_length = 10
+            if len(title) > max_length:
+                return JsonResponse({"error": f"Title must not exceed {max_length} characters."}, status=400)
 
-            # try:
-            #     MaxLengthValidator(max_length)(title)
-            # except ValidationError as e:
-            #     return JsonResponse({"error": e.message}, status=400)
+            try:
+                MaxLengthValidator(max_length)(title)
+            except ValidationError as e:
+                return JsonResponse({"error": e.message}, status=400)
 
             user = request.user
 

@@ -11,7 +11,6 @@ class TODOO(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False,blank=True,)
     user = models.ForeignKey( User, on_delete=models.CASCADE)
-    email = models.EmailField(unique=True)
     
     
     
